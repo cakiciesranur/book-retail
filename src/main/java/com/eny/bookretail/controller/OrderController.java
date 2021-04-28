@@ -41,7 +41,7 @@ public class OrderController {
     @ApiOperation(value = "This updates an existing order")
     public GenericResponse updateOrder(@PathVariable("id") long id, @Valid @RequestBody UpdateOrderDto request) {
         boolean isUpdated = orderService.updateOrder(id, request);
-        return genericResponseService.createResponseNoError("Updated customer successfully!", isUpdated);
+        return genericResponseService.createResponseNoError("Updated order successfully!", isUpdated);
     }
 
     @GetMapping("/getCustomerOrders/{id}")

@@ -17,7 +17,8 @@ public enum ErrorMessage {
     ORDER_NOT_FOUND(1003, "Order not found, something wrong!"),
     STOCK_NOT_FOUND(1004, "Stock not found, something wrong!"),
     VALIDATION_ERROR(1010, "Some fields are missing!"),
-    ORDER_STATUS_ERROR(1011, "Order status not allowed to update!");
+    ORDER_STATUS_ERROR(1011, "Order status not allowed to update!"),
+    ORDER_CANCEL_ERROR(1011, "Order could not cancel, Something is wrong!");
 
     private int code;
     private String message;

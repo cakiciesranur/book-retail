@@ -21,4 +21,6 @@ public interface IStockService {
     boolean updateStockById(long id, StockDto dto);
 
     boolean updateStockByBookId(long bookId, StockDto dto);
+
+    boolean increaseStockByBookId(Long bookId, int quantity);
 }

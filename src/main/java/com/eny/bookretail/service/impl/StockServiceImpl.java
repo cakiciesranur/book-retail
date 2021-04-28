@@ -102,4 +102,18 @@ public class StockServiceImpl implements IStockService {
         return true;
 
     }
+
+    @Override
+    public boolean increaseStockByBookId(Long bookId, int quantity) {
+        Optional<StockEntity> stockOpt = repository.findByBookId(bookId);
+        if (!stockOpt.isPresent()) {
+            return false;
+        }
+
+        StockEntity stock = stockOpt.get();
+        int currentQuantity = stock.getQuantity();
+        stock.setQuantity(currentQuantity + quantity);
+        repository.save(stock);
+        return true;
+    }
 }

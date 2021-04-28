@@ -5,6 +5,7 @@ import com.eny.bookretail.dto.request.OrderItemDto;
 import com.eny.bookretail.dto.request.UpdateOrderDto;
 import com.eny.bookretail.dto.response.OrderResponse;
 import com.eny.bookretail.enums.OrderStatus;
+import com.eny.bookretail.exception.runtime.CancelOrderException;
 import com.eny.bookretail.exception.runtime.OrderNotFoundException;
 import com.eny.bookretail.exception.runtime.OrderUpdateNotAllowedException;
 import com.eny.bookretail.exception.runtime.StockNotAvailableException;
@@ -59,7 +60,7 @@ public class OrderServiceImpl implements IOrderService {
             int wantedQuantity = item.getQuantity();
             if (!stockService.isStockAvailable(book, wantedQuantity)
                     || !stockService.decreaseStockQuantity(book, wantedQuantity)
-                    ) {
+            ) {
                 throw new StockNotAvailableException();
             }
             OrderDetailEntity details = createOrderDetail(dto, item, book, newOrder);
@@ -94,6 +95,15 @@ public class OrderServiceImpl implements IOrderService {
         }
 
         order.setStatus(dto.getNewOrderStatus());
+        if (OrderStatus.CANCELED.equals(dto.getNewOrderStatus())) {
+            order.getOrderDetails().forEach(orderDetail -> {
+                Long bookId = orderDetail.getBook().getId();
+                if (!stockService.increaseStockByBookId(bookId, orderDetail.getQuantity())) {
+                    throw new CancelOrderException();
+                }
+            });
+
+        }
         orderRepository.save(order);
 
         return true;

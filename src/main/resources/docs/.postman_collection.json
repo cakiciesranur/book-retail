@@ -1,0 +1,616 @@
+{
+	"info": {
+		"_postman_id": "f31c7cce-94ce-4954-a010-323387d86fed",
+		"name": "bookretail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "createCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"esra\",\r\n    \"lastName\": \"cakici\",\r\n    \"username\": \"esra\",\r\n    \"email\": \"cakici@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"address\": \"adress line\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/createCustomer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"createCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"esra\",\r\n    \"lastName\": \"cakici\",\r\n    \"address\": \"adress line updated!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerByUsernameOrEmail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"esra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/getUserByUsernameOrEmail",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"getUserByUsernameOrEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/customer/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getallCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/customer/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"3\",\r\n    \"totalPrice\": 40.0,\r\n    \"orderItems\": [\r\n        {\r\n            \"bookId\": \"4\",\r\n            \"quantity\": 1,\r\n            \"price\" : 20.0\r\n        },\r\n        {\r\n            \"bookId\": \"13\",\r\n            \"quantity\": 1,\r\n            \"price\" : 20.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrder",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newOrderStatus\" : \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/order/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerOrders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"3\",\r\n    \"totalPrice\": 20.0,\r\n    \"orderItems\": [\r\n        {\r\n            \"bookId\": \"4\",\r\n            \"quantity\": 1,\r\n            \"price\" : 20.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order/getCustomerOrders/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"getCustomerOrders",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "createBook",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kitap 5\",\r\n    \"author\" : \"esra cakici\",\r\n    \"unitPrice\" : 4.0,\r\n    \"description\": \"Description 1\",\r\n    \"stock\": {\r\n        \"quantity\" : 1\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBook",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\" : 4,\r\n    \"stock\": {\r\n        \"quantity\" : 3\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book/updateBook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"updateBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBooks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/book/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBook",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/book/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "getStockByStockId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/stock/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStockByBookId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/stock/getStockByBook/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"getStockByBook",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating Stock via updating book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\" : 4,\r\n    \"stock\": {\r\n        \"quantity\" : 3\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book/updateBook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book",
+								"updateBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStockById",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stock/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStockByBookId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stock/updateByBookId/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								"updateByBookId",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.accessToken);\r",
+							"postman.setEnvironmentVariable(\"token-type\", jsonData.data.tokenType);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usernameOrEmail\" : \"esra\",\r\n    \"password\" : \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
