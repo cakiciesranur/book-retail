@@ -20,7 +20,10 @@ You can also see database audit logging.
 
 You can see services information by this url -> http://localhost:8080/swagger-ui.html#/
 
-You can find postman collections in docs directory
+You can find postman collections in docs directory . 
+
+    environmet variable in postman -> baseUrl : http://localhost:8080
+    global variable in postman -> token
 
 also you can find database relational map in docs directory
 
