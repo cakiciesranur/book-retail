@@ -22,7 +22,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.eny.springproject"))
+                .apis(RequestHandlerSelectors.basePackage("com.eny.bookretail"))
                 .paths(regex("/.*"))
                 .build()
                 .apiInfo(metaData());
